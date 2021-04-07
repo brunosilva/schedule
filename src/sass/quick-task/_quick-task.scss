@@ -1,0 +1,84 @@
+.quick-task {
+    padding: 25px 0 25px 0;
+    background-color: #F0FFFF;
+
+    .container{
+        h2.title{
+            margin-bottom: 10px;
+        }
+
+        .row{
+            div{
+                p{
+                    margin-bottom: 0;
+                    font-family: Raleway;
+                    font-weight: 500;
+                    letter-spacing: 1px;
+                    display: flex;
+                    justify-content: space-between;
+                }
+
+                .card-dashboard{
+                    border: 1px solid #B0E0E6;
+                    background-color: #ffffff;
+                    border-radius: 4px;
+                    height: 200px;
+                    overflow-y: auto !important;
+                    padding: 10px;
+                    margin-bottom: 15px;
+
+                    .new-item{
+                        padding-top: 5px;
+                        padding-bottom: 5px;
+                        border-bottom: 1px solid lighten($color: #B0E0E6, $amount: 0.5);
+
+                        .row-identity{
+                            display: flex;
+                            flex-direction: column;
+                            
+                            span{
+                                font-size: 12px;
+                            }
+
+                            .span-name{
+                                font-weight: 600;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .card-todo{
+                .new-task{
+                    overflow: hidden;
+                    transform: translateY(-25px);
+                    padding-left: 7px;
+                    padding-right: 7px;
+                    color: transparent;
+                    background-color: transparent;
+                }
+
+                &:hover{
+                    .card-dashboard{
+                        border-top-right-radius: 0px !important;
+                    }
+
+                    .new-task{
+                        overflow: visible;
+                        transform: translateY(0);
+                        transition: all .50s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+                        padding-left: 7px;
+                        padding-right: 7px;
+                        color: #ffffff;
+                        text-decoration: none;
+                        background-color: #3aad4d;
+
+                        &:hover{
+                            background-color:darken($color: #3aad4d, $amount: 15%);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

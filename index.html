@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+        <link rel="stylesheet" href="assets/css/header.css">
+        <link rel="stylesheet" href="assets/css/quick-task.css">
+
+    <title>Schedule</title>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="javascript:void(0);">
+                    <img src="assets/images/logo-black.png" alt="">
+                </a>
+            </div>
+            <div class="menu">
+                <a href="javascript:void(0)">
+                    <i class="fas fa-bars"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+    <section class="quick-task">
+        <div class="container">
+            <h2 class="title">Quick Task</h2>
+            <div class="row">
+                <div class="col-lg-4 col-sm-12 col-xs-12 card-todo">
+                    <p class="title-card">To Do <a href="javascript:void(0)" class="new-task" data-toggle="modal" data-target="#exampleModalCenter">New Task</a></p>
+                    <div class="itens card-dashboard" id="itensTodo" ondrop="drop_handler(event);" ondragover="dragover_handler(event);">
+                        
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-12 col-xs-12">
+                    <p class="title-card">In Progress</p>
+                    <div class="itens card-dashboard" id="itensinprogress" ondrop="drop_handler(event);" ondragover="dragover_handler(event);">
+                        
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-12 col-xs-12">
+                    <p class="title-card">Done</p>
+                    <div class="itens card-dashboard" id="itensDone" ondrop="drop_handler(event);" ondragover="dragover_handler(event);">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="options-schedule">
+        <div class="container">
+            <h2 class="title">Schedule 2021</h2>
+        </div>
+    </section>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">New Task</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="" method=post name="formulario1">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" class="form-control" id="name" placeholder="Nome">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">E-mail</label>
+                            <input type="text" class="form-control" id="email" placeholder="E-mail">
+                        </div>
+                        <div class="modal-footer">
+                            <a href="javascript:void(0)" onclick="enviar()" class="btn btn-primary" data-dismiss="modal">Create</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"
+        integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-migrate-3.3.0.min.js"
+        integrity="sha256-wZ3vNXakH9k4P00fNGAlbN0PkpKSyhRa76IFy4V1PYE=" crossorigin="anonymous"></script>
+
+    <script src="src/js/main.js"></script>
+    <script src="src/js/board.js"></script>
+</body>
+</html>

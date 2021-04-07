@@ -1,0 +1,80 @@
+.rules{
+    margin-top: 60px;
+    margin-bottom: 60px;
+
+    .container{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+
+        .txt-principal{
+            width: 650px;
+            margin: 0 auto;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            font-family: Ubuntu;
+            font-weight: bold;
+            font-size: 32px;
+            line-height: 37px;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: #000000;
+            
+            @media screen and (max-width: 768px) {
+                width: 100%;
+                font-size: 25px;
+            }
+        }
+
+        .icons {
+            .listRules{
+                display: flex;
+                justify-content: space-between;
+                padding: 0;
+            
+                @media screen and (max-width: 768px) {
+                    display: flex;
+                    flex-wrap: wrap;
+                    margin-bottom: 0;
+                }
+
+                li{
+                    list-style: none;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    flex-direction: column;
+                    text-align: center;
+
+                    @media screen and (max-width: 768px) {
+                        width: 49%;
+                        margin-bottom: 25px;
+                    }
+
+                    .imgRule{
+                        width: 50px;
+                        height: 50px;
+                        margin-bottom: 7px;
+                    }
+
+                    .spanRule{
+                        width: 228px;
+                        display: flex;
+                        justify-content: center;
+                        flex-wrap: wrap;
+                        font-family: Nunito;
+                        font-size: 16px;
+                        line-height: 22px;
+                        color: #000000;
+                        
+                        @media screen and (max-width: 768px) {
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
