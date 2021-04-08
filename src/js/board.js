@@ -37,39 +37,104 @@ function drop_handler(ev) {
     ev.target.appendChild(document.getElementById(data));
 }
 
-function newTask(){
-    newItem = newElement("newItem","new-item","div");
-    newItem.setAttribute("id", generateIdentification());
-    newItem.innerHTML = "Elemento criado "+generateIdentification()
-    newItem.setAttribute("draggable", true);
-    newItem.setAttribute("ondragstart", "dragstart_handler(event);")
-    boxTodo = document.getElementById("itensTodo");
-    boxTodo.appendChild(newItem);
+function getDateToday(){
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth() + 1;
+    var yyyy = today.getFullYear();
+
+    if (dd < 10) {
+        dd = '0' + dd;
+    }
+    if (mm < 10) {
+        mm = '0' + mm;
+    }
+    var today = dd + '/' + mm + '/' + yyyy;
+    return today;
 }
 
+function formComplete(){
+    if ((target.value != "" || target < getDateToday()) && description.value != ""){
+        var buttonSend = document.getElementById("btnSendForm");
+        buttonSend.setAttribute("data-dismiss","modal");
+    }else{
+        spanMessage = document.getElementById("message");
+        spanMessage.innerHTML = "Preencher todos os campos"
+        spanMessage.className = "alert alert-danger"
+    }
+}
 
 function enviar(){
-    var name = document.getElementById("name").value;
-    var email = document.getElementById("email").value;
+    formComplete();
 
-    if (name.value != "" && email.value != "") {
+    var target = document.getElementById("target").value;
+    var description = document.getElementById("description").value;
+    var type = document.getElementById("inputState").value;
+    var assign = document.getElementById("inputOperator").value;
+
+    if ((target.value != "" || target < getDateToday()) && description.value != "") {
         boxTodo = document.getElementById("itensTodo");
         newItem = newElement("newItem","new-item","div");
         newItem.setAttribute("id", generateIdentification());
         newItem.setAttribute("draggable", true);
         newItem.setAttribute("ondragstart", "dragstart_handler(event);")
 
+        rowStyle = newElement("rowStyle","row-style","div");
         rowItem = newElement("rowItem","row-identity","div");
 
-        spanName = newElement("spanName","span-name","span");
-        spanName.innerHTML = name;
-        spanEmail = newElement("spanEmail","span-email","span");
-        spanEmail.innerHTML = email;
+        spanDate = newElement("spanDate","span-date","span");
+        spanDate.innerHTML = target;
+        assigned = newElement("assigned","assigned","p");
+        assigned.innerHTML = "Assigned to " + assign;
+        
+        pDescription = newElement("pDescription","description","p");
+        if(description.length > 125){
+            pDescription.innerHTML = description.substring(0,125) + "...";
+        }else{
+            pDescription.innerHTML = description;
+        }
 
-        rowItem.appendChild(spanName);
-        rowItem.appendChild(spanEmail);
+        typeSelect = newElement("typeSelect","type","span"); 
+        typeSelect.innerHTML = type;
+
+        if(type == "task"){
+            rowStyle.className = "row-style task-color";
+        }else if(type == "bug"){
+            rowStyle.className = "row-style bug-color";
+        }if(type == "feature"){
+            rowStyle.className = "row-style feature-color";
+        }
+
+        rowItem.appendChild(assigned);
+        rowItem.appendChild(pDescription);
+        rowStyle.appendChild(typeSelect);
+        rowStyle.appendChild(spanDate);
+        newItem.appendChild(rowStyle);
         newItem.appendChild(rowItem);
         boxTodo.appendChild(newItem);
     }
-
  }
+
+ function getAllOperator(){
+    var assignedTo = document.getElementById("inputOperator");
+    
+    for(var i = 0; i < operators.length; i++){
+        optionOp = newElement("optionOp","","option");
+        optionOp.innerHTML = operators[i].name;
+        assignedTo.appendChild(optionOp) ;
+    }
+    
+ }
+
+ window.onload = function(){
+    var dateToday = document.getElementById("date-today");
+    dateToday.innerHTML = getDateToday();
+
+    for(var i = 0; i < users.length; i++){
+        var user = users[i].email;
+        var userAuthenticated = document.getElementById("userAuthenticated");
+        userAuthenticated.innerHTML = user;
+    }
+
+    getAllOperator();
+}

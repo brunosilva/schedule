@@ -67,7 +67,7 @@
     <!-- Modal -->
     <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
         aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLongTitle">New Task</h5>
@@ -76,17 +76,46 @@
                     </button>
                 </div>
                 <div class="modal-body">
+                    <div class="form-row">
+                        <span class="" id="message"></span>
+                    </div>
                     <form action="" method=post name="formulario1">
-                        <div class="form-group">
+                        <div class="form-row date-identification">
+                            <span class="user" id="userAuthenticated"></span>
+                            <span class="today" id="date-today"></span>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <label for="target">Target Date</label>
+                                <input type="date" class="form-control" id="target" placeholder="Data">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="inputState">Type</label>
+                                <select id="inputState" class="form-control">
+                                    <option value="task" selected>Task</option>
+                                    <option value="bug">Bug</option>
+                                    <option value="feature">Feature</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="inputOperator">Assigned to</label>
+                                <select id="inputOperator" class="form-control"></select>
+                            </div>
+                        </div>
+                        <!-- <div class="form-group">
                             <label for="name">Name</label>
                             <input type="text" class="form-control" id="name" placeholder="Nome">
                         </div>
                         <div class="form-group">
                             <label for="email">E-mail</label>
                             <input type="text" class="form-control" id="email" placeholder="E-mail">
+                        </div> -->
+                        <div class="form-group">
+                            <label for="date">Description</label>
+                            <textarea type="date" class="form-control" id="description" placeholder="Descrição"></textarea>
                         </div>
                         <div class="modal-footer">
-                            <a href="javascript:void(0)" onclick="enviar()" class="btn btn-primary" data-dismiss="modal">Create</a>
+                            <a href="javascript:void(0)" onclick="enviar()" id="btnSendForm" class="btn btn-primary">Create</a>
                         </div>
                     </form>
                 </div>

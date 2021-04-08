@@ -1,3 +1,13 @@
+const users = [
+    {name: 'Bruno Silva', login:'brunosilva', email: 'brs.rsilva@gmail.com', password: '123456'}
+];
+
+const operators = [
+    {name: 'Bruno Silva', email: 'brs.rsilva@gmail.com'},
+    {name: 'Roberto Silva', email: 'rs.rsilva@gmail.com'},
+    {name: 'Bruno Roberto', email: 'bruno.robertos@gmail.com'}
+];
+
 
 function isMobile() {
     var device;
