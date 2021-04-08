@@ -57,62 +57,66 @@ function formComplete(){
     if ((target.value != "" || target < getDateToday()) && description.value != ""){
         var buttonSend = document.getElementById("btnSendForm");
         buttonSend.setAttribute("data-dismiss","modal");
+        return true;
     }else{
         spanMessage = document.getElementById("message");
         spanMessage.innerHTML = "Preencher todos os campos"
         spanMessage.className = "alert alert-danger"
+        return false;
     }
 }
 
 function enviar(){
-    formComplete();
+    if(formComplete() == true){
 
-    var target = document.getElementById("target").value;
-    var description = document.getElementById("description").value;
-    var type = document.getElementById("inputState").value;
-    var assign = document.getElementById("inputOperator").value;
-
-    if ((target.value != "" || target < getDateToday()) && description.value != "") {
-        boxTodo = document.getElementById("itensTodo");
-        newItem = newElement("newItem","new-item","div");
-        newItem.setAttribute("id", generateIdentification());
-        newItem.setAttribute("draggable", true);
-        newItem.setAttribute("ondragstart", "dragstart_handler(event);")
-
-        rowStyle = newElement("rowStyle","row-style","div");
-        rowItem = newElement("rowItem","row-identity","div");
-
-        spanDate = newElement("spanDate","span-date","span");
-        spanDate.innerHTML = target;
-        assigned = newElement("assigned","assigned","p");
-        assigned.innerHTML = "Assigned to " + assign;
-        
-        pDescription = newElement("pDescription","description","p");
-        if(description.length > 125){
-            pDescription.innerHTML = description.substring(0,125) + "...";
-        }else{
-            pDescription.innerHTML = description;
+        var target = document.getElementById("target").value;
+        var description = document.getElementById("description").value;
+        var type = document.getElementById("inputState").value;
+        var assign = document.getElementById("inputOperator").value;
+    
+        if ((target.value != "" || target < getDateToday()) && description.value != "") {
+            boxTodo = document.getElementById("itensTodo");
+            newItem = newElement("newItem","new-item","div");
+            newItem.setAttribute("id", generateIdentification());
+            newItem.setAttribute("draggable", true);
+            newItem.setAttribute("ondragstart", "dragstart_handler(event);")
+    
+            rowStyle = newElement("rowStyle","row-style","div");
+            rowItem = newElement("rowItem","row-identity","div");
+    
+            spanDate = newElement("spanDate","span-date","span");
+            spanDate.innerHTML = target;
+            assigned = newElement("assigned","assigned","p");
+            assigned.innerHTML = "Assigned to " + assign;
+    
+            pDescription = newElement("pDescription","description","p");
+            if(description.length > 125){
+                pDescription.innerHTML = description.substring(0,125) + "...";
+            }else{
+                pDescription.innerHTML = description;
+            }
+    
+            typeSelect = newElement("typeSelect","type","span"); 
+            typeSelect.innerHTML = type;
+    
+            if(type == "task"){
+                rowStyle.className = "row-style task-color";
+            }else if(type == "bug"){
+                rowStyle.className = "row-style bug-color";
+            }if(type == "feature"){
+                rowStyle.className = "row-style feature-color";
+            }
+    
+            rowItem.appendChild(assigned);
+            rowItem.appendChild(pDescription);
+            rowStyle.appendChild(typeSelect);
+            rowStyle.appendChild(spanDate);
+            newItem.appendChild(rowStyle);
+            newItem.appendChild(rowItem);
+            boxTodo.appendChild(newItem);
         }
-
-        typeSelect = newElement("typeSelect","type","span"); 
-        typeSelect.innerHTML = type;
-
-        if(type == "task"){
-            rowStyle.className = "row-style task-color";
-        }else if(type == "bug"){
-            rowStyle.className = "row-style bug-color";
-        }if(type == "feature"){
-            rowStyle.className = "row-style feature-color";
-        }
-
-        rowItem.appendChild(assigned);
-        rowItem.appendChild(pDescription);
-        rowStyle.appendChild(typeSelect);
-        rowStyle.appendChild(spanDate);
-        newItem.appendChild(rowStyle);
-        newItem.appendChild(rowItem);
-        boxTodo.appendChild(newItem);
     }
+
  }
 
  function getAllOperator(){
