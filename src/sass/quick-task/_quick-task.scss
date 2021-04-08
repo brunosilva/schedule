@@ -27,6 +27,8 @@
                     padding: 10px;
                     margin-bottom: 15px;
 
+                    @include scrollbar($white, $v2-dark);
+
                     .new-item{
                         padding: 0;
                         margin-bottom: 10px;
@@ -44,27 +46,15 @@
                         }
 
                         .task-color{
-                            background-color: lighten($color: #F58B1F, $amount: 5%);
-                            color: #ffffff;
-                            text-transform: uppercase;
-                            border-top-left-radius: 4px;
-                            border-top-right-radius: 4px;
+                            @include define-card(#F58B1F);
                         }
 
                         .bug-color{
-                            background-color: lighten($color: #e60000, $amount: 5%);
-                            color: #ffffff;
-                            text-transform: uppercase;
-                            border-top-left-radius: 4px;
-                            border-top-right-radius: 4px;
+                            @include define-card(#e60000);
                         }
 
                         .feature-color{
-                            background-color: lighten($color: #22c40d, $amount: 5%);
-                            color: #ffffff;
-                            text-transform: uppercase;
-                            border-top-left-radius: 4px;
-                            border-top-right-radius: 4px;
+                            @include define-card(#22c40d);
                         }
 
                         .row-identity{
