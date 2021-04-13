@@ -1,4 +1,4 @@
-function generateIdentification(){
+function generateIdentification() {
     var elements = document.querySelectorAll('.itens .new-item');
     numElement = (elements.length + 1);
     return numElement;
@@ -24,7 +24,7 @@ function dragstart_handler(ev) {
 
 function dragover_handler(ev) {
     ev.preventDefault();
-    
+
     // Define o dropEffect para ser do tipo move
     ev.dataTransfer.dropEffect = "move";
 }
@@ -37,7 +37,7 @@ function drop_handler(ev) {
     ev.target.appendChild(document.getElementById(data));
 }
 
-function getDateToday(){
+function getDateToday() {
     var today = new Date();
     var dd = today.getDate();
     var mm = today.getMonth() + 1;
@@ -53,12 +53,12 @@ function getDateToday(){
     return today;
 }
 
-function formComplete(){
-    if ((target.value != "" || target < getDateToday()) && description.value != ""){
+function formComplete() {
+    if ((target.value != "" || target < getDateToday()) && description.value != "") {
         var buttonSend = document.getElementById("btnSendForm");
-        buttonSend.setAttribute("data-dismiss","modal");
+        buttonSend.setAttribute("data-dismiss", "modal");
         return true;
-    }else{
+    } else {
         spanMessage = document.getElementById("message");
         spanMessage.innerHTML = "Preencher todos os campos"
         spanMessage.className = "alert alert-danger"
@@ -66,47 +66,47 @@ function formComplete(){
     }
 }
 
-function enviar(){
-    if(formComplete() == true){
+function enviar() {
+    if (formComplete() == true) {
 
         var target = document.getElementById("target").value;
         var description = document.getElementById("description").value;
         var type = document.getElementById("inputState").value;
         var assign = document.getElementById("inputOperator").value;
-    
+
         if ((target.value != "" || target < getDateToday()) && description.value != "") {
             boxTodo = document.getElementById("itensTodo");
-            newItem = newElement("newItem","new-item","div");
+            newItem = newElement("newItem", "new-item", "div");
             newItem.setAttribute("id", generateIdentification());
             newItem.setAttribute("draggable", true);
             newItem.setAttribute("ondragstart", "dragstart_handler(event);")
-    
-            rowStyle = newElement("rowStyle","row-style","div");
-            rowItem = newElement("rowItem","row-identity","div");
-    
-            spanDate = newElement("spanDate","span-date","span");
+
+            rowStyle = newElement("rowStyle", "row-style", "div");
+            rowItem = newElement("rowItem", "row-identity", "div");
+
+            spanDate = newElement("spanDate", "span-date", "span");
             spanDate.innerHTML = target;
-            assigned = newElement("assigned","assigned","p");
+            assigned = newElement("assigned", "assigned", "p");
             assigned.innerHTML = "Assigned to " + assign;
-    
-            pDescription = newElement("pDescription","description","p");
-            if(description.length > 125){
-                pDescription.innerHTML = description.substring(0,125) + "...";
-            }else{
+
+            pDescription = newElement("pDescription", "description", "p");
+            if (description.length > 125) {
+                pDescription.innerHTML = description.substring(0, 125) + "...";
+            } else {
                 pDescription.innerHTML = description;
             }
-    
-            typeSelect = newElement("typeSelect","type","span"); 
+
+            typeSelect = newElement("typeSelect", "type", "span");
             typeSelect.innerHTML = type;
-    
-            if(type == "task"){
+
+            if (type == "task") {
                 rowStyle.className = "row-style task-color";
-            }else if(type == "bug"){
+            } else if (type == "bug") {
                 rowStyle.className = "row-style bug-color";
-            }if(type == "feature"){
+            } if (type == "feature") {
                 rowStyle.className = "row-style feature-color";
             }
-    
+
             rowItem.appendChild(assigned);
             rowItem.appendChild(pDescription);
             rowStyle.appendChild(typeSelect);
@@ -117,24 +117,50 @@ function enviar(){
         }
     }
 
- }
+}
 
- function getAllOperator(){
+function getAllOperator() {
     var assignedTo = document.getElementById("inputOperator");
-    
-    for(var i = 0; i < operators.length; i++){
-        optionOp = newElement("optionOp","","option");
-        optionOp.innerHTML = operators[i].name;
-        assignedTo.appendChild(optionOp) ;
-    }
-    
- }
 
- window.onload = function(){
+    for (var i = 0; i < operators.length; i++) {
+        optionOp = newElement("optionOp", "", "option");
+        optionOp.innerHTML = operators[i].name;
+        assignedTo.appendChild(optionOp);
+    }
+
+}
+
+function openForm(whatForm) {
+    let statusForm = document.getElementById("form-" + whatForm);
+    let status = statusForm.classList.contains("close-form");
+    var txtButtom = document.getElementById("btnOpenForm_" + whatForm);
+
+    console.log(statusForm);
+
+    console.log(txtButtom);
+
+    if (status == true) {
+        statusForm.classList.remove("close.form");
+        statusForm.className = "form-meeting open-form";
+        txtButtom.innerHTML = '';
+        txtButtom.innerHTML = 'FECHAR';
+        txtButtom.classList.remove("btn-success");
+        txtButtom.className = "btn btn-danger";
+    } else {
+        statusForm.classList.remove("open.form");
+        statusForm.className = "form-meeting close-form";
+        txtButtom.innerHTML = '';
+        txtButtom.innerHTML = 'NEW';
+        txtButtom.classList.remove("btn-danger");
+        txtButtom.className = "btn btn-success";
+    }
+}
+
+window.onload = function () {
     var dateToday = document.getElementById("date-today");
     dateToday.innerHTML = getDateToday();
 
-    for(var i = 0; i < users.length; i++){
+    for (var i = 0; i < users.length; i++) {
         var user = users[i].email;
         var userAuthenticated = document.getElementById("userAuthenticated");
         userAuthenticated.innerHTML = user;

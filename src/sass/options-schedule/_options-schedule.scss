@@ -1,0 +1,29 @@
+.options-schedule {
+    padding: 25px 0 25px 0;
+    background-color: #ffffff;
+
+    .container{
+        h2.title{
+            margin-bottom: 10px;
+        }
+
+        .tab-content{
+            width: 100%;
+
+            .close-form{
+                display: none;
+            }
+
+            .open-form{
+                display: block;
+            }
+
+            .form-row{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-top: 15px;
+            }
+        }
+    }
+}

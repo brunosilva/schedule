@@ -35,6 +35,13 @@ module.exports = {
         filename: 'quick-task.css' 
       }
     },
+    optionsSchedule: {
+      scss: {
+        src: `${paths.src}/${paths.scss}/options-schedule/module.scss`,
+        dist: `${paths.dist}/${paths.css}`,
+        filename: 'options-schedule.css' 
+      }
+    },
     footer: {
       scss: {
         src: `${paths.src}/${paths.scss}/footer/module.scss`,
