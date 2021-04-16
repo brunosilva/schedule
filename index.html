@@ -81,22 +81,22 @@
                             <a href="javascript:void(0)" class="new-meeting btn btn-success" id="btnOpenForm_meeting" onclick="openForm('meeting')">NEW</a>
                         </div>
                         
-                        <div class="form-meeting close-form" id="form-meeting">
-                            <form action="" name="">
+                        <div class="form-meeting close-form" id="form_meeting">
+                            <form action="" name="formMeeting" id="formMeeting">
                                 <div class="form-group">
                                     <label for="name_meeting">Name</label>
-                                    <input type="text" class="form-control" id="name_meeting" placeholder="Name">
+                                    <input type="text" class="form-control" name="name" id="name_meeting" placeholder="Name">
                                 </div>
                                 <div class="form-group">
                                     <label for="email_meeting">E-mail</label>
-                                    <input type="text" class="form-control" id="email_meeting" placeholder="E-mail">
+                                    <input type="text" class="form-control" name="email" id="email_meeting" placeholder="E-mail">
                                 </div>
                                 <div class="form-group">
                                     <label for="link_meeting">Link</label>
-                                    <input type="text" class="form-control" id="link_meeting" placeholder="Link">
+                                    <input type="text" class="form-control" name="link" id="link_meeting" placeholder="Link">
                                 </div>
                                 <div class="form-group">
-                                    <a href="javascript:void(0)" id="btnSendFormMeeting" class="btn btn-primary">Create</a>
+                                    <a href="javascript:void(0)" onclick="saveMeeting()" id="btnSendFormMeeting" class="btn btn-primary">Create</a>
                                 </div>
                             </form>
                         </div>
@@ -321,6 +321,7 @@
         integrity="sha256-wZ3vNXakH9k4P00fNGAlbN0PkpKSyhRa76IFy4V1PYE=" crossorigin="anonymous"></script>
 
     <script src="src/js/main.js"></script>
+    <script src="src/js/crud.js"></script>
     <script src="src/js/board.js"></script>
 </body>
 </html>

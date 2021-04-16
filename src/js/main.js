@@ -9,6 +9,10 @@ const operators = [
 ];
 
 var objMeeting = new Object();
+var objPurchase = new Object();
+var objRemember = new Object();
+var objPay = new Object();
+var objBirthday = new Object();
 
 function isMobile() {
     var device;
