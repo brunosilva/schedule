@@ -116,7 +116,6 @@ function enviar() {
             boxTodo.appendChild(newItem);
         }
     }
-
 }
 
 function getAllOperator() {
@@ -127,17 +126,12 @@ function getAllOperator() {
         optionOp.innerHTML = operators[i].name;
         assignedTo.appendChild(optionOp);
     }
-
 }
 
 function openForm(whatForm) {
     let statusForm = document.getElementById("form-" + whatForm);
     let status = statusForm.classList.contains("close-form");
     var txtButtom = document.getElementById("btnOpenForm_" + whatForm);
-
-    console.log(statusForm);
-
-    console.log(txtButtom);
 
     if (status == true) {
         statusForm.classList.remove("close.form");
@@ -156,6 +150,39 @@ function openForm(whatForm) {
     }
 }
 
+function saveFormMeeting(){
+    var nameMeeting = document.getElementById("name_meeting");
+    var emailMeeting = document.getElementById("email_meeting");
+    var linkMeeting = document.getElementById("link_meeting");
+
+    objMeeting.name = nameMeeting.value;
+    objMeeting.email = emailMeeting.value;
+    objMeeting.link = linkMeeting.value;
+    saveObject(objMeeting);
+
+    nameMeeting.value = '';
+    emailMeeting.value = '';
+    linkMeeting.value = '';
+
+    listMeeting();
+}
+
+function saveObject(objMeeting){
+    localStorage.setItem('object', JSON.stringify(objMeeting));
+} 
+
+function listMeeting(){
+    var lstMeeting = JSON.parse(localStorage.getItem('object'));
+
+    var nameMeeting = document.getElementById("nameMeeting");
+    var emailMeeting = document.getElementById("EmailMeeting");
+    var linkMeeting = document.getElementById("LinkMeeting");
+
+    nameMeeting.innerHTML = lstMeeting.name;
+    emailMeeting.innerHTML = lstMeeting.email;
+    linkMeeting.innerHTML = lstMeeting.link;
+}
+
 window.onload = function () {
     var dateToday = document.getElementById("date-today");
     dateToday.innerHTML = getDateToday();
@@ -165,6 +192,9 @@ window.onload = function () {
         var userAuthenticated = document.getElementById("userAuthenticated");
         userAuthenticated.innerHTML = user;
     }
+
+    var formMeeting = document.getElementById("btnSendFormMeeting");
+    formMeeting.addEventListener('click', saveFormMeeting);
 
     getAllOperator();
 }
